@@ -1,0 +1,5 @@
+%{
+  "cowboy": {:git, "https://github.com/ninenines/cowboy.git", "de955079f90d52cc626baebb52154f116c1ab5dd", []},
+  "cowlib": {:git, "https://github.com/ninenines/cowlib", "1b5539a1da1d39b110d81b118000f00bbedaf4b4", [ref: "2.9.1"]},
+  "ranch": {:git, "https://github.com/ninenines/ranch", "3190aef88aea04d6dce8545fe9b4574288903f44", [ref: "1.7.1"]},
+}
