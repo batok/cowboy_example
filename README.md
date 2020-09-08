@@ -19,3 +19,15 @@ To verify that it's working, from another terminal session do...
 $ curl localhost:8080
 ```
 
+To use unix sockets intead of a tcp port start with
+
+```bash
+$ USE_UNIX_SOCKETS=1 mix run --no-halt
+```
+
+and to test it with curl, from another terminal session do
+
+```bash
+$ curl --unix-socket cowboy_example.sock localhost
+```
+

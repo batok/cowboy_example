@@ -16,7 +16,12 @@ defmodule CowboyExample.Application do
   def start(_type, _args) do
     dispatch = :cowboy_router.compile(routes())
     Logger.info("after routes")
-    {:ok, _pid} = :cowboy.start_clear(:http, [port: 8080], %{env: %{dispatch: dispatch}})
+    options =
+      case System.get_env("USE_UNIX_SOCKETS") do
+        "1" -> [port: 0, ip: {:local, "cowboy_example.sock"}]
+        _ -> [port: 8080]
+      end
+    {:ok, _pid} = :cowboy.start_clear(:http, options, %{env: %{dispatch: dispatch}})
     Logger.info("after cowboy init")
     info = :ranch.info(:http)
     Logger.info("ranch:info/1 #{inspect info}")
