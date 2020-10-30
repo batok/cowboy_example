@@ -13,4 +13,4 @@ RUN mix release
 
 USER default
 
-CMD ./_build/prod/rel/cowboy_example/bin/cowboy_example start
+CMD ["./_build/prod/rel/cowboy_example/bin/cowboy_example",  "start"]

@@ -31,3 +31,21 @@ and to test it with curl, from another terminal session do
 $ curl --unix-socket cowboy_example.sock localhost
 ```
 
+## Docker
+
+If you want to run it with Docker
+
+first build the docker image
+
+```bash
+$ docker build --tag cowboy_example:1.0 .
+```
+
+and to run it ...
+
+```bash
+$ sudo docker run --rm  --user=root --publish 8080:8080 --name cowboy_example_z cowb
+oy_example:1.0
+```
+
+Maybe you need or not to run with sudo.
