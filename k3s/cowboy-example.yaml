@@ -1,0 +1,61 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cowboy-example-deployment
+  namespace: cowboy-example
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cowboy-example
+  template:
+    metadata:
+      labels:
+        app: cowboy-example
+    spec:
+      containers:
+        - name: cowboy-example
+          image: batok/cowboy-example:1.0
+          securityContext:
+            runAsUser: 0
+            allowPrivilegeEscalation: false
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+          - containerPort: 8080
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cowboy-example-service
+  namespace: cowboy-example
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+    name: tcp
+  selector:
+    app: cowboy-example
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: cowboy-example-ingress
+  namespace: cowboy-example
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: cowboy-example-service
+          servicePort: 80

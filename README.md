@@ -49,3 +49,29 @@ oy_example:1.0
 ```
 
 Maybe you need or not to run with sudo.
+
+*  Running with kubernetes ( using k3s )
+
+Install k3s on your system.
+Build and push the Dockerfile included in this repo to your public or private docker repository or use the one that is in the yaml file.
+If you want to use your own docker image from your preferred registry change the line ...
+
+```yaml
+          image: batok/cowboy-example:1.0
+```
+
+to suit your needs.
+
+Deploy app with ....
+
+```bash
+$ sudo k3s kubectl deploy -f k3s/cowboy_example
+```
+
+To know your IP address exposed as port 80 run ...
+
+```bash
+$ sudo k3s kubectl get ingress,svc,pods -n cowboy-example
+```
+
+
