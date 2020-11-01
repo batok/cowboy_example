@@ -65,7 +65,7 @@ to suit your needs.
 Deploy app with ....
 
 ```bash
-$ sudo k3s kubectl deploy -f k3s/cowboy_example
+$ sudo k3s kubectl deploy -f k3s/cowboy_example.yaml
 ```
 
 To know your IP address exposed as port 80 run ...
