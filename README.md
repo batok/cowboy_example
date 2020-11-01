@@ -50,7 +50,7 @@ oy_example:1.0
 
 Maybe you need or not to run with sudo.
 
-*  Running with kubernetes ( using k3s )
+##  Running with kubernetes ( using k3s )
 
 Install k3s on your system.
 Build and push the Dockerfile included in this repo to your public or private docker repository or use the one that is in the yaml file.
