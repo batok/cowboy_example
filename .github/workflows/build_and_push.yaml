@@ -28,7 +28,7 @@ jobs:
         with:
           push: true
           tags: 
-            ghcr.io/user/app:latest
+            ghcr.io/batok/cowboy_example/cowboy_example:latest
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
