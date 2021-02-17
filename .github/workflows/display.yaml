@@ -1,0 +1,12 @@
+name: display_owner
+
+on:
+  workflow_dispatch
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Display Repo Owner
+        run: echo ${{ github.repository_owner }}
