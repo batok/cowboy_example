@@ -67,6 +67,11 @@ Deploy app with ....
 ```bash
 $ sudo k3s kubectl deploy -f k3s/cowboy_example.yaml
 ```
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+
 
 To know your IP address exposed as port 80 run ...
 
